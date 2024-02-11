@@ -1,25 +1,30 @@
+import { Box, Container, Grid, Paper, ThemeProvider, createTheme } from '@mui/material';
+import { green, yellow } from '@mui/material/colors';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+
+  const outerTheme = createTheme({
+    palette: {
+      primary: {
+        main: green[500],
+      },
+      secondary: {
+        main: yellow[500],
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={outerTheme}>
+      <Container sx={{ minWidth: 1 }} id='app.contianer' component={'div'}>
+        <Paper sx={{ minWidth: 1 }} id='app.paper'>
+          <Box sx={{ width: 1 / 4 }} id='app.paper.box.select'>
+            Select position
+          </Box>
+        </Paper>
+      </Container>
+    </ThemeProvider>
   );
 }
 
